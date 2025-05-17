@@ -1,8 +1,12 @@
+# These tests are auto-generated with test data from:
+# https://github.com/exercism/problem-specifications/tree/main/exercises/raindrops/canonical-data.json
+# File last updated on 2023-07-19
+
 import unittest
 
-from raindrops import convert
-
-# Tests adapted from `problem-specifications//canonical-data.json` @ v1.1.0
+from raindrops import (
+    convert,
+)
 
 
 class RaindropsTest(unittest.TestCase):
@@ -22,7 +26,7 @@ class RaindropsTest(unittest.TestCase):
         self.assertEqual(convert(6), "Pling")
 
     def test_2_to_the_power_3_does_not_make_a_raindrop_sound_as_3_is_the_exponent_not_the_base(
-        self
+        self,
     ):
         self.assertEqual(convert(8), "8")
 
@@ -61,7 +65,3 @@ class RaindropsTest(unittest.TestCase):
 
     def test_the_sound_for_3125_is_plang_as_it_has_a_factor_5(self):
         self.assertEqual(convert(3125), "Plang")
-
-
-if __name__ == "__main__":
-    unittest.main()
