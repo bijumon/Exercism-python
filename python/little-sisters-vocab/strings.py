@@ -8,7 +8,7 @@ def add_prefix_un(word):
     :return: str - of root word prepended with 'un'.
     """
 
-    return "un" + word
+    return 'un' + word
 
 
 def make_word_groups(vocab_words):
