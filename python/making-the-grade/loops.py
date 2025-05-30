@@ -61,7 +61,7 @@ def letter_grades(highest):
     no_grades = 4 # A B C D
     threshold_increment = round((highest - low_score)/no_grades)
     lower_threshold = []
-    for index, score in enumerate(["D","C","B","A"]):
+    for index in range(no_grades):
         lower_threshold.append(low_score + (threshold_increment*index))
     return lower_threshold
 
