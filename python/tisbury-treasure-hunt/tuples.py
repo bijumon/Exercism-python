@@ -29,8 +29,7 @@ def compare_records(azara_record, rui_record):
     :param rui_record: tuple - a (location, tuple(coordinate_1, coordinate_2), quadrant) trio.
     :return: bool - do the coordinates match?
     """
-    return True if tuple(azara_record[1]) == rui_record[1] else False
-
+    return tuple(azara_record[1]) == rui_record[1]
 
 def create_record(azara_record, rui_record):
     """Combine the two record types (if possible) and create a combined record group.
@@ -39,10 +38,7 @@ def create_record(azara_record, rui_record):
     :param rui_record: tuple - a (location, coordinate, quadrant) trio.
     :return: tuple or str - the combined record (if compatible), or the string "not a match" (if incompatible).
     """
-    if compare_records(azara_record, rui_record):
-        return azara_record + rui_record
-    else:
-        return "not a match"
+    return azara_record + rui_record if compare_records(azara_record, rui_record) else "not a match"
 
 
 def clean_up(combined_record_group):
@@ -56,8 +52,8 @@ def clean_up(combined_record_group):
     (see HINTS.md for an example).
     """
 
-    r = ""
-    for i in combined_record_group:
-        if tuple(i[1]) == i[3]:
-            r += f"""('{i[0]}', '{i[2]}', {i[3]}, '{i[4]}')\n"""
-    return r
+    report = ""
+    for item in combined_record_group:
+        if tuple(item[1]) == item[3]:
+            report += f"""('{item[0]}', '{item[2]}', {item[3]}, '{item[4]}')\n"""
+    return report
