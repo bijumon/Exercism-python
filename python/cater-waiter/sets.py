@@ -35,11 +35,8 @@ def check_drinks(drink_name, drink_ingredients):
     name followed by "Cocktail" (includes alcohol).
 
     """
-
-    if set(drink_ingredients).isdisjoint(ALCOHOLS):
-        return f"{drink_name} Mocktail"
-    else:
-        return f"{drink_name} Cocktail"
+    
+    return f"{drink_name} Mocktail" if set(drink_ingredients).isdisjoint(ALCOHOLS) else f"{drink_name} Cocktail"
 
 
 def categorize_dish(dish_name, dish_ingredients):
@@ -63,7 +60,7 @@ def categorize_dish(dish_name, dish_ingredients):
     for category, name in categories:
         if dish_ingredients <= category:
             return f"{dish_name}: {name}"
-
+    return f"{dish_name}: UNCLASSIFIED"
 
 def tag_special_ingredients(dish):
     """Compare `dish` ingredients to `SPECIAL_INGREDIENTS`.
@@ -89,8 +86,8 @@ def compile_ingredients(dishes):
     """
 
     masterlist = set()
-    for d in dishes:
-        masterlist = masterlist.union(d)
+    for ingrediants in dishes:
+        masterlist = masterlist.union(ingrediants)
     return masterlist
 
 def separate_appetizers(dishes, appetizers):
