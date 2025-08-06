@@ -12,11 +12,30 @@ You can learn more here: https://en.wikipedia.org/wiki/Enumerated_type
 
 # Possible sublist categories.
 # Change the values as you see fit.
-SUBLIST = None
-SUPERLIST = None
-EQUAL = None
-UNEQUAL = None
+SUBLIST = 1
+SUPERLIST = 2
+EQUAL = 3
+UNEQUAL = 0
 
+def is_sublist(A: list, B: list) -> bool:
+    """True if list_one is a contiguous slice in list_two"""
 
-def sublist(list_one, list_two):
-    pass
+    lenA, lenB = len(A), len(B)
+    if lenA == 0: 
+        return True
+    if lenA > lenB:
+        return False
+    return any(B[i:i+lenA] == A for i in range(lenB - lenA + 1))
+
+def sublist(A:list, B:list):
+    """
+    return - relationship between lists A and B
+    relation is one of 'equal', 'sublist', 'superlist', 'unequal'.
+    """
+    if A == B:
+        return EQUAL
+    elif is_sublist(A, B):
+        return SUBLIST
+    elif is_sublist(B, A):
+        return SUPERLIST
+    return UNEQUAL
